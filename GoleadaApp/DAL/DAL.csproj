@@ -76,9 +76,13 @@
     <Compile Include="Entities\Validaciones\GolesPorJugadorEquipoMetadata.cs" />
     <Compile Include="Entities\Validaciones\JugadorMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Base\BaseRepository.cs" />
+    <Compile Include="Repositories\Base\IRepository.cs" />
+    <Compile Include="Repositories\Goles\GolesRepository.cs" />
+    <Compile Include="Repositories\Goles\IGolesRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <Folder Include="Repositories\Jugadores\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Entities\EDMX\Model1.edmx">
