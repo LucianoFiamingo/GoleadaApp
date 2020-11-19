@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="connections.config" />
     <None Include="Entities\EDMX\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>

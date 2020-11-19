@@ -1,23 +1,19 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-
-    @{Html.RenderPartial("pv_Navbar")}
-
-    <div class="container body-content">
-       
+<body class="pt-0">
+    @{Html.RenderPartial("~/Views/Partials/pv_Navbar.cshtml");}
+    <div class="container">
         @RenderBody()
-
-        @{Html.RenderPartial("pv_Footer")}
     </div>
+    @{Html.RenderPartial("~/Views/Partials/pv_Footer.cshtml");}
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
