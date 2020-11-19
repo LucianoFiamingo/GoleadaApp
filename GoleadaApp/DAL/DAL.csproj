@@ -71,10 +71,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Validaciones\GolesPorJugadorEquipo.cs" />
+    <Compile Include="Entities\Validaciones\Jugador.cs" />
+    <Compile Include="Entities\Validaciones\GolesPorJugadorEquipoMetadata.cs" />
+    <Compile Include="Entities\Validaciones\JugadorMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\Validaciones\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
