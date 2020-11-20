@@ -16,6 +16,16 @@ namespace Services
             repo.Alta(Goles);
         }
 
+        public void AltaModificacion(GolesPorJugadorEquipo Goles)
+        {
+            repo.AltaModificacion(Goles);
+        }
+
+        public GolesPorJugadorEquipo ObtenerPorEquipoYNombreJugador(GolesPorJugadorEquipo Goles)
+        {
+            return repo.ObtenerPorEquipoYNombreJugador(Goles);
+        }
+
         public GolesPorJugadorEquipo ObtenerPorId(int Id)
         {
             return repo.ObtenerPorId(Id);

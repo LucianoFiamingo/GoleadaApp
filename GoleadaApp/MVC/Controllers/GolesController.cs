@@ -36,7 +36,7 @@ namespace MVC.Controllers
                 return View(goles);
             }
 
-            GolesService.Alta(goles);
+            GolesService.AltaModificacion(goles);
             TempData["Creado"] = JugadoresService.ObtenerPorId(goles.IdJugador).Nombre.ToString();
             return RedirectToAction("ListaGolesJugador");
 
