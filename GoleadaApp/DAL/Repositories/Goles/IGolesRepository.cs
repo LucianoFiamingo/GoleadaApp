@@ -1,10 +1,11 @@
-﻿using DAL;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace DAL
 {
     public interface IGolesRepository
     {
+        void Alta(GolesPorJugadorEquipo Goles);
+        GolesPorJugadorEquipo ObtenerPorId(int Id);
+        List<GolesPorJugadorEquipo> ObtenerTodos();
     }
 }

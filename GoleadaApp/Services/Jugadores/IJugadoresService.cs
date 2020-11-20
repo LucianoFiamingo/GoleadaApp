@@ -1,13 +1,12 @@
-﻿using System;
+﻿using DAL;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services
 {
     public interface IJugadoresService
     {
-
+        void Alta(Jugador Jugador);
+        Jugador ObtenerPorId(int Id);
+        List<Jugador> ObtenerTodos();
     }
 }
