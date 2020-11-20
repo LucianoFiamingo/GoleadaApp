@@ -8,7 +8,7 @@ namespace DAL.Entities.EDMX
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar un nombre")]
-        [StringLength (200, ErrorMessage = "El nombre no puede exceder los 200 caracteres")]
+        [StringLength (80, ErrorMessage = "El nombre no puede exceder los 80 caracteres")]
         public string Nombre { get; set; }
     }
 }

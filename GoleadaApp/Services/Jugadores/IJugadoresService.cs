@@ -10,5 +10,6 @@ namespace Services
         Jugador ObtenerPorId(int Id);
         List<Jugador> ObtenerTodos();
         List<SelectListItem> ObtenerComboJugadores();
+        List<SelectListItem> ObtenerComboJugadores(int IdJugador);
     }
 }

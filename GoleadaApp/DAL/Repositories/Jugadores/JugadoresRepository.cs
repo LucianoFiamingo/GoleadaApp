@@ -19,9 +19,9 @@ namespace DAL
 
         public Jugador ObtenerPorId(int Id)
         {
-            var JugadorQuery = from g in contexto.Jugadors
-                             where g.Id == Id
-                             select g;
+            var JugadorQuery = from j in contexto.Jugadors
+                             where j.Id == Id
+                             select j;
 
             Jugador Jugador = JugadorQuery.First();
 
@@ -30,8 +30,9 @@ namespace DAL
 
         public List<Jugador> ObtenerTodos()
         {
-            var JugadoresQuery = from g in contexto.Jugadors
-                             select g;
+            var JugadoresQuery = from j in contexto.Jugadors
+                                 orderby j.Nombre
+                             select j;
 
             List<Jugador> ListaJugadores = JugadoresQuery.ToList();
 

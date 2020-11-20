@@ -31,6 +31,7 @@ namespace DAL
         public List<GolesPorJugadorEquipo> ObtenerTodos()
         {
             var GolesQuery = from g in contexto.GolesPorJugadorEquipoes
+                             orderby g.Jugador.Nombre
                              select g;
 
             List<GolesPorJugadorEquipo> ListaGoles = GolesQuery.ToList();

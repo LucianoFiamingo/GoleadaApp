@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\JugadoresController.cs" />
     <Compile Include="Controllers\GolesController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -279,6 +280,8 @@
     <Content Include="Views\Partials\DNI.cshtml" />
     <Content Include="Views\Goles\ListaGolesJugador.cshtml" />
     <Content Include="Views\Goles\AltaGolesJugador.cshtml" />
+    <Content Include="Views\Jugadores\AltaJugador.cshtml" />
+    <Content Include="Views\Jugadores\ListaJugadores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

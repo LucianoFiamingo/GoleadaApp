@@ -18,7 +18,7 @@
 
     <h2>Registrar goles de un jugador</h2>
 
-    @Html.ActionLink("Ir a Listado de Jugadores", "ListaJugadores", "Jugadores", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Ir a Listado de Goles por Jugador", "ListaGolesJugador", "Goles", null, new { @class = "btn btn-success" })
 
 </div>
 
@@ -35,7 +35,7 @@
         <div class="form-group">
             <label class="control-label">Jugadores</label>
             <div class="col-md-10 col-lg-6 px-0">
-                @Html.DropDownListFor(Model => Model.IdJugador, (List<SelectListItem>)ViewBag.ListaJugadores, new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.IdJugador, (List<SelectListItem>)ViewBag.ListaJugadores, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdJugador, "", new { @class = "text-danger" })
             </div>
         </div>
