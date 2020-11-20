@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Entities.EDMX
 {
-    [MetadataType(typeof(JugadorMetadata))]
+    [MetadataType(typeof(GolesPorJugadorEquipoMetadata))]
     public partial class GolesPorJugadorEquipo
     {
 

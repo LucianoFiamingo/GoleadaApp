@@ -1,0 +1,68 @@
+﻿@model DAL.Entities.EDMX.GolesPorJugadorEquipo
+
+@{
+    ViewBag.Title = "Alta de Goles para un Jugador";
+}
+
+@if (TempData["Creado"] != null && (string)TempData["Creado"] == "FALSE")
+{
+    <div class="alert alert-danger alert-dismissible fade show text-center mt-5" role="alert">
+        Error al crear registro de goles del jugador
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-5">
+
+    <h2>Registrar goles de un jugador</h2>
+
+    @Html.ActionLink("Ir a Listado de Jugadores", "ListaJugadores", "Jugadores", null, new { @class = "btn btn-success" })
+
+</div>
+
+<p>A continuación puede registrar un jugador con sus goles en un equipo</p>
+<hr class="mb-5" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label class="control-label">Jugadores</label>
+            <div class="col-md-10 col-lg-6 px-0">
+                @Html.DropDownListFor(Model => Model.IdJugador, (List<SelectListItem>)ViewBag.ListaJugadores, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdJugador, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Equipo</label>
+            <div class="col-md-10 col-lg-6 px-0">
+                @Html.EditorFor(model => model.Equipo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Equipo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Cantidad de goles</label>
+            <div class="col-md-10 col-lg-6 px-0">
+                @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 px-0">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+@Scripts.Render("~/bundles/jqueryval")
+

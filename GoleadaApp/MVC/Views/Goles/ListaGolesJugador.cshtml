@@ -1,0 +1,57 @@
+﻿@model List<DAL.Entities.EDMX.GolesPorJugadorEquipo>
+
+@{
+    ViewBag.Title = "Lista Goles";
+}
+
+
+@if (TempData["Creado"] != null && (string)TempData["Creado"] != "FALSE")
+{
+    <div class="alert alert-success alert-dismissible fade show text-center mt-5" role="alert">
+        ¡Registro de jugador <strong>@TempData["Creado"].ToString()</strong> creado correctamente!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-5">
+
+    <h2>Listado de Jugadores y sus Goles</h2>
+
+    @Html.ActionLink("Crear Nuevo Registro de Goles", "AltaGolesJugador", null, new { @class = "btn btn-success" })
+
+</div>
+
+<p>A continuación se muestra la lista de todos los jugadores con sus goles por equipo</p>
+<hr class="mb-5" />
+
+<table class="table table-bordered table-hover">
+    <tr class="bg-light">
+        <th>
+            Equipo
+        </th>
+        <th>
+            Catidad de Goles
+        </th>
+        <th>
+            Jugador
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Equipo
+            </td>
+            <td>
+                @item.Cantidad
+            </td>
+            <td>
+                @item.Jugador.Nombre
+            </td>
+        </tr>
+    }
+
+</table>
