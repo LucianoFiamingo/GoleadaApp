@@ -8,7 +8,9 @@ namespace DAL.Entities.EDMX
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Debe insertar una cantidad de goles")]
+        [DataType(DataType.Text)]
         [Range(1, 3000, ErrorMessage = "Debe ingresar un número entre 1 y 1000")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Ingrese un valor númerico entero")]
         public int Cantidad { get; set; }
 
         [Required(ErrorMessage = "Debe insertar el nombre del Equipo")]
