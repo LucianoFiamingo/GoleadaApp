@@ -1,0 +1,45 @@
+﻿@model List<DAL.Entities.EDMX.Jugador>
+
+@{
+    ViewBag.Title = "Lista Goles";
+}
+
+
+@if (TempData["Creado"] != null && (string)TempData["Creado"] != "FALSE")
+{
+    <div class="alert alert-success alert-dismissible fade show text-center mt-5" role="alert">
+        ¡El jugador <strong>@TempData["Creado"].ToString()</strong> fue creado correctamente!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-5">
+
+    <h2>Listado de jugadores registrados</h2>
+
+    @Html.ActionLink("Crear Nuevo Jugador", "AltaJugador", null, new { @class = "btn btn-success" })
+
+</div>
+
+<p>A continuación se muestra la lista de todos los jugadores registrados</p>
+<hr class="mb-5" />
+
+<table class="table table-bordered table-hover">
+    <tr class="bg-light">
+        <th>
+            Nombre
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Nombre
+            </td>
+        </tr>
+    }
+
+</table>
