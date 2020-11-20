@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DAL.Entities.EDMX;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +8,7 @@ namespace Services
     public class GolesService : IGolesService
     {
         protected GolesRepository repo;
-        public GolesService(Entities contexto)
+        public GolesService(GoleadaDBEntities contexto)
         {
             repo = new GolesRepository(contexto);
         }

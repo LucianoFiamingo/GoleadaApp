@@ -1,13 +1,14 @@
 ﻿using DAL;
+using DAL.Entities.EDMX;
 using System.Collections.Generic;
 
 namespace Services
 {
     public class JugadoresService : IJugadoresService
     {
-        protected Entities contexto;
+        protected GoleadaDBEntities contexto;
         protected JugadoresRepository repo;
-        public JugadoresService(Entities contexto)
+        public JugadoresService(GoleadaDBEntities contexto)
         {
             this.contexto = contexto;
         }

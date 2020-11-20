@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace DAL.Entities.EDMX
 {
     using System;
     using System.Collections.Generic;

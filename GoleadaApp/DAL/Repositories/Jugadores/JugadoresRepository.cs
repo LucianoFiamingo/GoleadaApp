@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using DAL.Entities.EDMX;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DAL
 {
     public class JugadoresRepository : IJugadoresRepository
     {
-        protected Entities contexto;
-        public JugadoresRepository(Entities contexto)
+        protected GoleadaDBEntities contexto;
+        public JugadoresRepository(GoleadaDBEntities contexto)
         {
             this.contexto = contexto;
         }

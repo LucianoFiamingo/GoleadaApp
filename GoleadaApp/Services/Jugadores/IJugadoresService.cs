@@ -1,4 +1,4 @@
-﻿using DAL;
+﻿using DAL.Entities.EDMX;
 using System.Collections.Generic;
 
 namespace Services

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DAL
+namespace DAL.Entities.EDMX
 {
     internal class JugadorMetadata
     {

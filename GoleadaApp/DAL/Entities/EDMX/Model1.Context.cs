@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace DAL.Entities.EDMX
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class GoleadaDBEntities : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public GoleadaDBEntities()
+            : base("name=GoleadaDBEntities")
         {
         }
     

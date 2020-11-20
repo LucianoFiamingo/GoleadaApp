@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DAL.Entities.EDMX;
+using System.Collections.Generic;
 
 namespace DAL
 {
