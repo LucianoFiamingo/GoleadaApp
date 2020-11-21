@@ -71,5 +71,16 @@ namespace DAL
 
             return ListaGoles;
         }
+        public string TotalGolesEquipo(string equipo)
+        {
+            var GolesQuery = (from g in contexto.GolesPorJugadorEquipoes
+                             where g.Equipo == equipo
+                             select g.Cantidad).DefaultIfEmpty(0).Sum();
+
+            string cant = GolesQuery.ToString();
+
+            return cant;
+        }
+
     }
 }

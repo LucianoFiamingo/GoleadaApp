@@ -10,5 +10,6 @@ namespace DAL
         GolesPorJugadorEquipo ObtenerPorId(int Id);
         List<GolesPorJugadorEquipo> ObtenerTodos();
         GolesPorJugadorEquipo ObtenerPorEquipoYNombreJugador(GolesPorJugadorEquipo Goles);
+        string TotalGolesEquipo(string equipo);
     }
 }

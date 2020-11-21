@@ -43,7 +43,7 @@
     {
         <tr>
             <td>
-                @item.Equipo
+                @Html.ActionLink(item.Equipo, "PruebaApi", new { id = item.Equipo }, new { @class = "" })
             </td>
             <td>
                 @item.Cantidad
