@@ -44,8 +44,9 @@ namespace MVC.Controllers
             return RedirectToAction("ListaGolesJugador");
         }
 
-        public ActionResult PruebaApi(string id)
+        public ActionResult GolesPruebaApi(string id)
         {
+            ViewBag.Equipo = id;
             ViewBag.Cant = GetGolesEquipo(id);
             return View();
         }

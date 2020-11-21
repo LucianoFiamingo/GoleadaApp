@@ -291,7 +291,7 @@
     <Content Include="Views\Goles\AltaGolesJugador.cshtml" />
     <Content Include="Views\Jugadores\AltaJugador.cshtml" />
     <Content Include="Views\Jugadores\ListaJugadores.cshtml" />
-    <Content Include="Views\Goles\PruebaApi.cshtml" />
+    <Content Include="Views\Goles\GolesPruebaApi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
