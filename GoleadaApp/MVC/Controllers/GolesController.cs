@@ -1,4 +1,5 @@
-﻿using DAL.Entities.EDMX;
+﻿using API;
+using DAL.Entities.EDMX;
 using Newtonsoft.Json;
 using Services;
 using System.Collections.Generic;
@@ -68,6 +69,35 @@ namespace MVC.Controllers
                     {
                         string responseBody = objReader.ReadToEnd();
                         var result = JsonConvert.DeserializeObject<string>(responseBody);
+                        return result;
+                    }
+                }
+            }
+        }
+
+        public ActionResult GolesDTOApi()
+        {
+            List<GolesDTO> goles = GetGolesDTOApi();
+            return View(goles);
+        }
+
+        private List<GolesDTO> GetGolesDTOApi()
+        {
+            var url = $"https://localhost:44350/api/golesdtoapi";
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+
+            using (WebResponse response = request.GetResponse())
+            {
+                using (Stream strReader = response.GetResponseStream())
+                {
+                    if (strReader == null) return new List<GolesDTO>();
+                    using (StreamReader objReader = new StreamReader(strReader))
+                    {
+                        string responseBody = objReader.ReadToEnd();
+                        var result = JsonConvert.DeserializeObject<List<GolesDTO>>(responseBody);
                         return result;
                     }
                 }

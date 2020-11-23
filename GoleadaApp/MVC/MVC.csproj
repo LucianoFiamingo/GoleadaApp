@@ -292,6 +292,7 @@
     <Content Include="Views\Jugadores\AltaJugador.cshtml" />
     <Content Include="Views\Jugadores\ListaJugadores.cshtml" />
     <Content Include="Views\Goles\GolesPruebaApi.cshtml" />
+    <Content Include="Views\Goles\GolesDTOApi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -309,6 +310,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\API\API.csproj">
+      <Project>{551A5632-55CD-4B2A-9073-52A7E7562AB4}</Project>
+      <Name>API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{AAACE420-201E-46AB-888A-BC7FF7F5D4A0}</Project>
       <Name>DAL</Name>
