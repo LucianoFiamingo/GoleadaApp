@@ -1,9 +1,13 @@
-﻿using API;
-using DAL.Entities.EDMX;
+﻿using DAL.Entities.EDMX;
+using Entities.DTO;
+using Entities.VM;
+using MVC.Models;
 using Newtonsoft.Json;
 using Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
@@ -102,6 +106,67 @@ namespace MVC.Controllers
                     }
                 }
             }
+        }
+
+        public ActionResult GolesServerSide()
+        {
+            return View();
+        }
+        public ActionResult GetData(JqueryDatatableParam param)
+        {
+            List<GolesDTO> employees = GetGolesDTOApi();
+
+            //employees.ToList().ForEach(x => x.StartDateString = x.StartDate.ToString("dd'/'MM'/'yyyy"));
+
+            if (!string.IsNullOrEmpty(param.sSearch))
+            {
+                employees = employees.Where(x => x.Cantidad.ToString().Contains(param.sSearch.ToLower())
+                                              || x.Equipo.ToLower().Contains(param.sSearch.ToLower())
+                                              || x.NombreJugador.ToLower().Contains(param.sSearch.ToLower())).ToList();
+            }
+
+            var sortColumnIndex = Convert.ToInt32(HttpContext.Request.QueryString["iSortCol_0"]);
+            var sortDirection = HttpContext.Request.QueryString["sSortDir_0"];
+
+            if (sortColumnIndex == 3)
+            {
+                employees = (sortDirection == "asc" ? employees.OrderBy(c => c.Cantidad).ToList() : employees.OrderByDescending(c => c.Cantidad).ToList());
+            }
+            else if (sortColumnIndex == 4)
+            {
+                employees = (sortDirection == "asc" ? employees.OrderBy(c => c.Equipo).ToList() : employees.OrderByDescending(c => c.Equipo).ToList());
+            }
+            else if (sortColumnIndex == 5)
+            {
+                employees = (sortDirection == "asc" ? employees.OrderBy(c => c.NombreJugador).ToList() : employees.OrderByDescending(c => c.NombreJugador).ToList());
+            }
+            else
+            {
+                Func<GolesDTO, string> orderingFunction = e => sortColumnIndex == 0 ? e.NombreJugador :
+                                                               sortColumnIndex == 1 ? e.Equipo :
+                                                               e.Cantidad.ToString();
+
+                employees = sortDirection == "asc" ? employees.OrderBy(orderingFunction).ToList() : employees.OrderByDescending(orderingFunction).ToList();
+            }
+
+            var displayResult = employees.Skip(param.iDisplayStart)
+                .Take(param.iDisplayLength).ToList();
+            var totalRecords = employees.Count();
+
+            return Json(new
+            {
+                param.sEcho,
+                iTotalRecords = totalRecords,
+                iTotalDisplayRecords = totalRecords,
+                aaData = displayResult
+            }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult GolesEquipo()
+        {
+            List<GolesEquipoVM> golesEquipos = GolesService.GolesPorEquipo();
+            return View(golesEquipos);
         }
     }
 }

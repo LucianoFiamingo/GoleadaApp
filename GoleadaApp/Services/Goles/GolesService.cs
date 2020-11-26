@@ -1,5 +1,6 @@
 ﻿using DAL;
 using DAL.Entities.EDMX;
+using Entities.VM;
 using System;
 using System.Collections.Generic;
 
@@ -40,6 +41,11 @@ namespace Services
         public string TotalGolesEquipo(string equipo)
         {
             return repo.TotalGolesEquipo(equipo);
+        } 
+        
+        public List<GolesEquipoVM> GolesPorEquipo()
+        {
+            return repo.GolesPorEquipo();
         }
     }
 }

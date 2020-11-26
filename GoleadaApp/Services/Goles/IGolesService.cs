@@ -1,4 +1,5 @@
 ﻿using DAL.Entities.EDMX;
+using Entities.VM;
 using System.Collections.Generic;
 
 namespace Services
@@ -11,5 +12,7 @@ namespace Services
         List<GolesPorJugadorEquipo> ObtenerTodos();
         GolesPorJugadorEquipo ObtenerPorEquipoYNombreJugador(GolesPorJugadorEquipo Goles);
         string TotalGolesEquipo(string equipo);
+        List<GolesEquipoVM> GolesPorEquipo();
+
     }
 }

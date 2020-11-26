@@ -1,4 +1,4 @@
-﻿@model IEnumerable<API.GolesDTO>
+﻿@model List<Entities.DTO.GolesDTO>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -6,13 +6,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Cantidad)
+            @Html.DisplayNameFor(model => model.First().Cantidad)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Equipo)
+            @Html.DisplayNameFor(model => model.First().Equipo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdJugador)
+            @Html.DisplayNameFor(model => model.First().NombreJugador)
         </th>
         <th></th>
     </tr>
@@ -27,11 +27,11 @@
                 @Html.DisplayFor(modelItem => item.Equipo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdJugador)
+                @Html.DisplayFor(modelItem => item.NombreJugador)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id}) |
+                @Html.ActionLink("Details", "Details", new {id = item.Id}) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>

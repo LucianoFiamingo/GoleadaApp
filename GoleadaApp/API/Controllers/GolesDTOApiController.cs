@@ -1,4 +1,5 @@
 ﻿using DAL.Entities.EDMX;
+using Entities.DTO;
 using Services;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -24,7 +25,7 @@ namespace API.Controllers
                 golDTO.Id = item.Id;
                 golDTO.Cantidad = item.Cantidad;
                 golDTO.Equipo = item.Equipo;
-                golDTO.IdJugador = item.IdJugador;
+                golDTO.NombreJugador = item.Jugador.Nombre;
 
                 golesDTO.Add(golDTO);
             }

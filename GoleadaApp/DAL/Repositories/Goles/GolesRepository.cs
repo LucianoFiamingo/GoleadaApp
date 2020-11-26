@@ -1,4 +1,5 @@
 ﻿using DAL.Entities.EDMX;
+using Entities.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,6 +82,31 @@ namespace DAL
 
             return cant;
         }
+        
+        public List<GolesEquipoVM> GolesPorEquipo()
+        {
+            var GolesEquipoQuery = from g in contexto.GolesPorJugadorEquipoes
+                                            group g by g.Equipo into g
+                                            select new GolesEquipoVM 
+                                            { Equipo = g.Key, Cantidad = g.Sum(o => o.Cantidad), PromedioJugadores = g.Sum(o => o.Cantidad) / g.Count()};
+
+            List<GolesEquipoVM> GolesEquipo = GolesEquipoQuery.ToList();
+
+            return GolesEquipo;
+        }
+        /*
+        public List<GolesEquipoVM> GolesPorEquipo()
+        {
+            var GolesEquipoQuery = from g in contexto.GolesPorJugadorEquipoes
+                                   group g by new { g.Equipo, g.Cantidad } into g
+                                   select new GolesEquipoVM
+                                   { Equipo = g.Key.Equipo, Cantidad = g.Sum(x => x.Cantidad) };
+
+            List<GolesEquipoVM> GolesEquipo = GolesEquipoQuery.ToList();
+
+            return GolesEquipo;
+        }
+        */
 
     }
 }
