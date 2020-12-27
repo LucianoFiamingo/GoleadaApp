@@ -1,6 +1,8 @@
 ﻿using DAL.Entities.EDMX;
+using Entities.VM;
 using Services;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
@@ -8,7 +10,7 @@ namespace MVC.Controllers
     public class JugadoresController : Controller
     {
         JugadoresService JugadoresService;
-       public JugadoresController()
+        public JugadoresController()
         {
             GoleadaDBEntities contexto = new GoleadaDBEntities();
             JugadoresService = new JugadoresService(contexto);
@@ -18,24 +20,30 @@ namespace MVC.Controllers
             List<Jugador> Jugadores = JugadoresService.ObtenerTodos();
             return View(Jugadores);
         }
-        public ActionResult AltaJugador()
+
+        public ActionResult AltaJugadores()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AltaJugador(Jugador Jugador)
+        public ActionResult AltaJugadores(JugadoresVM Jugadores)
         {
-            if (!ModelState.IsValid)
+            if (!JugadoresService.Validar(Jugadores))
             {
                 TempData["Creado"] = "FALSE";
-                return View(Jugador);
+                return View(Jugadores);
             }
 
-            JugadoresService.Alta(Jugador);
-            TempData["Creado"] = Jugador.Nombre.ToString();
+            if (Jugadores.Nombres.Count() == 1)
+            {
+                TempData["Creado"] = JugadoresService.AltaJugadores(Jugadores);
+            }
+            else
+            {
+                TempData["Creados"] = JugadoresService.AltaJugadores(Jugadores);
+            }
             return RedirectToAction("ListaJugadores");
-
         }
 
     }

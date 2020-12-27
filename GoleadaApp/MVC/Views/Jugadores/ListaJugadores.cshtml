@@ -15,11 +15,21 @@
     </div>
 }
 
+@if (TempData["Creados"] != null && (string)TempData["Creados"] != "FALSE")
+{
+    <div class="alert alert-success alert-dismissible fade show text-center mt-5" role="alert">
+        ¡Los jugadores <strong>@TempData["Creados"].ToString()</strong> fueron creados correctamente!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-5">
 
     <h2>Listado de jugadores registrados</h2>
 
-    @Html.ActionLink("Crear Nuevo Jugador", "AltaJugador", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Crear Nuevos Jugadores", "AltaJugadores", null, new { @class = "btn btn-success" })
 
 </div>
 

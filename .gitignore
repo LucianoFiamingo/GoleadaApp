@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/GoleadaApp/MVC/connections.config
+/GoleadaApp/DAL/connections.config
+/GoleadaApp/MVC/Views/Partials/pv_Footer.cshtml
+/GoleadaApp/MVC/Views/Partials/DNI.cshtml
+/GoleadaApp/API/connection.config

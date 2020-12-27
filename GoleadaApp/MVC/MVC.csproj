@@ -305,6 +305,7 @@
     <Content Include="Views\Goles\GolesServerSide.cshtml" />
     <Content Include="Views\Goles\GolesEquipo.cshtml" />
     <Content Include="Views\Inicio\Indice.cshtml" />
+    <Content Include="Views\Jugadores\AltaJugadores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

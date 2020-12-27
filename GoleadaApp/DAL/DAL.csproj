@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\DTO\GolesDTO.cs" />
+    <Compile Include="Entities\VM\JugadoresVM.cs" />
     <Compile Include="Entities\VM\GolesEquipoVM.cs" />
     <Compile Include="Entities\EDMX\GolesPorJugadorEquipo.cs">
       <DependentUpon>Model1.tt</DependentUpon>

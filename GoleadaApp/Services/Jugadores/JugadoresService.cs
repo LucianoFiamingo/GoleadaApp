@@ -1,5 +1,6 @@
 ﻿using DAL;
 using DAL.Entities.EDMX;
+using Entities.VM;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -28,6 +29,47 @@ namespace Services
             return repo.ObtenerTodos();
         }
 
+        public string AltaJugadores(JugadoresVM Jugadores)
+        {
+            int ultimo = Jugadores.Nombres.Count();
+            int count = 1;
+            string mensaje = null;
+
+            foreach (var jug in Jugadores.Nombres)
+            {
+                Jugador jugNuevo = new Jugador();
+                jugNuevo.Nombre = jug;
+                Alta(jugNuevo);
+
+                if (count == ultimo - 1)
+                {
+                    mensaje += jugNuevo.Nombre.ToString() + " y ";
+                    count++;
+                }
+                else if (count == ultimo)
+                {
+                    mensaje += jugNuevo.Nombre.ToString();
+                }
+                else
+                {
+                    mensaje += jugNuevo.Nombre.ToString() + ", ";
+                    count++;
+                }
+            }
+            return mensaje;
+        }
+
+        public bool Validar(JugadoresVM Jugadores)
+        {
+            foreach (var jug in Jugadores.Nombres)
+            {
+                if (jug == null || jug.Length < 4 || jug.Length > 80)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public List<SelectListItem> ObtenerComboJugadores()
         {
             List<Jugador> jugs = repo.ObtenerTodos();

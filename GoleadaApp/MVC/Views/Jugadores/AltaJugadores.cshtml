@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "Alta de muchos Jugadores";
+}
+
+@if (TempData["Creado"] != null && (string)TempData["Creado"] == "FALSE")
+{
+    <div class="alert alert-danger alert-dismissible fade show text-center mt-5" role="alert">
+        ¡Error al intentar crear jugadores!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-5">
+
+    <h2>Registrar jugadores</h2>
+
+    @Html.ActionLink("Ir a Listado de Jugadores", "ListaJugadores", "Jugadores", null, new { @class = "btn btn-success" })
+
+</div>
+
+<p>A continuación puede registrar varios jugadores</p>
+<hr class="mb-5" />
+
+<form action="AltaJugadores" method="post" onsubmit="return validar()">
+
+    <div class="form-horizontal">
+
+        <div id="form">
+
+            <div class="form-group form-jug" id="form_1">
+                <label class="control-label">Nombre Jugador</label>
+                <div class="col-md-10 col-lg-6 px-0">
+                    <div class="row mx-0">
+                        <div class="col-10 px-0">
+                            <input class="form-control input-jug text-box "
+                                   id="Nombre_1" name="Nombres[]" type="text" value="">
+                        </div>
+                        <div class="col px-0 pl-4">
+                            <input onclick="remove()" id="remove_1" type="button" class="btn btn-danger btn-jug remove d-none" value="-">
+                        </div>
+                    </div>
+                    <span id="msg_1" class="text-danger msg-val"></span>
+                </div>
+
+            </div>
+
+            <div class="form-group form-jug" id="form_2">
+                <label class="control-label">Nombre Jugador</label>
+                <div class="col-md-10 col-lg-6 px-0">
+                    <div class="row mx-0">
+                        <div class="col-10 px-0">
+                            <input class="form-control input-jug text-box "
+                                   id="Nombre_2" name="Nombres[]" type="text" value="">
+                        </div>
+                        <div class="col px-0 pl-4">
+                            <input onclick="remove()" id="remove_2" type="button" class="btn btn-danger btn-jug remove" value="-">
+                        </div>
+                    </div>
+                    <span id="msg_2" class="msg-val text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 px-0">
+                <button id="add" type="button" class="btn btn-primary my-2">Agregar otro</button>
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </div>
+
+        <script>
+            $("#add").click(function () {
+                var total_element = $(".form-jug").length;
+
+                var lastid = $(".form-jug:last").attr("id");
+                var split_id = lastid.split("_");
+                var nextindex = Number(split_id[1]) + 1;
+
+                var max = 5;
+                if (total_element < max) {
+                    $(".form-jug").first().clone().appendTo("#form");
+                    $(".input-jug:last").val("");
+                    $(".msg-val:last").html("");
+                    $(".form-jug").last().attr("id", "form_" + nextindex);
+                    $(".btn-jug").last().attr("id", "remove_" + nextindex);
+                    $(".input-jug").last().attr("id", "Nombre_" + nextindex);
+                    $(".msg-val").last().attr("id", "msg_" + nextindex);
+                    $(".btn-jug").last().removeClass("d-none");
+                }
+            });
+
+            function remove() {
+                $('.form-jug').on('click', '.remove', function () {
+                    var id = this.id;
+                    var split_id = id.split("_");
+                    var deleteindex = split_id[1];
+                    $("#form_" + deleteindex).remove();
+                });
+            }
+
+            function validar() {
+                var total = $('.form-jug');
+                var error = 0;
+
+                for (var i = 0; i < total.length; i++) {
+
+                    var id = total[i].id;
+                    var split_id = id.split("_");
+                    var index = split_id[1];
+                    var input = $("#Nombre_" + index).val();
+                    var msg = "";
+
+                    if (input.length <= 0) {
+                        msg = "El nombre es requerido";
+                        error++;
+                    }
+                    else if (input.length < 4) {
+                        msg = "El nombre no puede tener menos de 4 caracteres";
+                        error++;
+                    }
+                    else if (input.length > 80) {
+                        msg = "El nombre no puede exceder los 80 caracteres";
+                        error++;
+                    }
+                    $("#msg_" + index).html(msg);
+                }
+
+                if (error != 0) {
+                    return false;
+                }
+                return true;
+            }
+        </script>
+
+    </div>
+
+</form>
+
+@Scripts.Render("~/bundles/jqueryval")
+
