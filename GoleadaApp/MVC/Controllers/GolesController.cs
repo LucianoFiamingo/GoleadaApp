@@ -58,7 +58,7 @@ namespace MVC.Controllers
 
         private string GetGolesEquipo(string id)
         {
-            var url = $"https://localhost:44350/api/cantidadtotalgolesequipo/{id}";
+            var url = $"https://localhost:44350/api/cantidadtotalgolesequipoapi/{id}";
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             request.ContentType = "application/json";
