@@ -66,17 +66,17 @@
                 </div>
             </div>
 
-            <template>
-                <div class="form-group" id="form_">
+            <template  id="tem-form-jug">
+                <div class="form-group form-jug" id="form_tem">
                     <label class="control-label">Nombre Jugador</label>
                     <div class="col-md-10 col-lg-6 px-0">
                         <div class="row mx-0">
                             <div class="col-10 px-0">
                                 <input class="form-control input-jug text-box "
-                                       id="Nombre_" name="Nombres[]" type="text" value="">
+                                       name="Nombres[]" type="text" value="">
                             </div>
                             <div class="col px-0 pl-4">
-                                <button onclick="remove()" id="remove_" type="button" class="btn btn-danger btn-jug remove" value="-">
+                                <button onclick="remove()" type="button" class="btn btn-danger btn-jug remove">
                                     <ion-icon name="remove-outline"></ion-icon>
                                 </button>
                             </div>
@@ -97,22 +97,24 @@
 
         <script>
             $("#add").click(function () {
-                var total_element = $(".form-jug").length;
 
                 var lastid = $(".form-jug:last").attr("id");
                 var split_id = lastid.split("_");
                 var nextindex = Number(split_id[1]) + 1;
 
+                var total_elements = $(".form-jug").length;
                 var max = 5;
-                if (total_element < max) {
-                    $(".form-jug").first().clone().appendTo("#form");
-                    $(".input-jug:last").val("");
-                    $(".msg-val:last").html("");
-                    $(".form-jug").last().attr("id", "form_" + nextindex);
-                    $(".btn-jug").last().attr("id", "remove_" + nextindex);
-                    $(".input-jug").last().attr("id", "Nombre_" + nextindex);
-                    $(".msg-val").last().attr("id", "msg_" + nextindex);
-                    $(".btn-jug").last().removeClass("d-none");
+                if (total_elements < max) {
+                    var $div = $("#tem-form-jug").html();
+                    $("#form").append($div);
+
+                    var $div = $("#form_tem");
+                    $("#form_tem").find(".btn-jug").attr("id", "remove_" + nextindex);
+                    $("#form_tem").find(".input-jug").attr("id", "Nombre_" + nextindex);
+                    $("#form_tem").find(".msg-val").attr("id", "msg_" + nextindex);
+
+                    $("form_tem").removeAttr("id");
+                    $("#form_tem").attr("id", "form_" + nextindex);
                 }
             });
 
