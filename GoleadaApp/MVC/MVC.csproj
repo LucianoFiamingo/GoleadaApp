@@ -166,6 +166,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom\custom-ajax.js" />
+    <Content Include="Scripts\custom\abm-jugs.js" />
     <Content Include="Scripts\custom\navegar.js" />
     <Content Include="Scripts\Dragula\dragula.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />

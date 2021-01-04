@@ -35,7 +35,7 @@
                 <label class="control-label">Nombre Jugador</label>
                 <div class="col-md-10 col-lg-6 px-0">
                     <div class="row mx-0">
-                        <div class="col-10 px-0">
+                        <div class="col-9 px-0">
                             <input class="form-control input-jug text-box "
                                    id="Nombre_1" name="Nombres[]" type="text" value="">
                         </div>
@@ -48,36 +48,49 @@
 
             </div>
 
-            <div class="form-group form-jug" id="form_2">
-                <label class="control-label">Nombre Jugador</label>
-                <div class="col-md-10 col-lg-6 px-0">
-                    <div class="row mx-0">
-                        <div class="col-10 px-0">
-                            <input class="form-control input-jug text-box "
-                                   id="Nombre_2" name="Nombres[]" type="text" value="">
+            <div id="form-mov">
+
+                <div class="form-group form-jug" id="form_2">
+                    <label class="control-label">Nombre Jugador</label>
+                    <div class="col-md-10 col-lg-6 px-0">
+                        <div class="row mx-0">
+                            <div class="col-9 px-0">
+                                <input class="form-control input-jug text-box "
+                                       id="Nombre_2" name="Nombres[]" type="text" value="">
+                            </div>
+                            <div class="col px-0 pl-4">
+                                <button onclick="remove()" id="remove_2" type="button" class="btn btn-danger btn-jug remove" value="-">
+                                    <ion-icon name="remove-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="col px-0 pl-4">
+                                <button type="button" class="btn btn-primary btn-move">
+                                    <ion-icon class="btn-move" name="move-outline"></ion-icon>
+                                </button>
+                            </div>
                         </div>
-                        <div class="col px-0 pl-4">
-                            <button onclick="remove()" id="remove_2" type="button" class="btn btn-danger btn-jug remove" value="-">
-                            <ion-icon name="remove-outline"></ion-icon>
-                            </button>
-                        </div>
+                        <span id="msg_2" class="msg-val text-danger"></span>
                     </div>
-                    <span id="msg_2" class="msg-val text-danger"></span>
                 </div>
             </div>
 
-            <template  id="tem-form-jug">
+            <template id="tem-form-jug">
                 <div class="form-group form-jug" id="form_tem">
                     <label class="control-label">Nombre Jugador</label>
                     <div class="col-md-10 col-lg-6 px-0">
                         <div class="row mx-0">
-                            <div class="col-10 px-0">
+                            <div class="col-9 px-0">
                                 <input class="form-control input-jug text-box "
                                        name="Nombres[]" type="text" value="">
                             </div>
                             <div class="col px-0 pl-4">
                                 <button onclick="remove()" type="button" class="btn btn-danger btn-jug remove">
                                     <ion-icon name="remove-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="col px-0 pl-4">
+                                <button type="button" class="btn btn-primary btn-move">
+                                    <ion-icon class="btn-move" name="move-outline"></ion-icon>
                                 </button>
                             </div>
                         </div>
@@ -88,84 +101,17 @@
 
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10 px-0">
-                <button id="add" type="button" class="btn btn-primary my-2">Agregar otro</button>
-                <input type="submit" value="Guardar" class="btn btn-success" />
-            </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 px-0">
+            <button id="add" type="button" class="btn btn-primary my-2">Agregar otro</button>
+            <input type="submit" value="Guardar" class="btn btn-success" />
         </div>
-
-        <script>
-            $("#add").click(function () {
-
-                var lastid = $(".form-jug:last").attr("id");
-                var split_id = lastid.split("_");
-                var nextindex = Number(split_id[1]) + 1;
-
-                var total_elements = $(".form-jug").length;
-                var max = 5;
-                if (total_elements < max) {
-                    var $div = $("#tem-form-jug").html();
-                    $("#form").append($div);
-
-                    var $div = $("#form_tem");
-                    $("#form_tem").find(".btn-jug").attr("id", "remove_" + nextindex);
-                    $("#form_tem").find(".input-jug").attr("id", "Nombre_" + nextindex);
-                    $("#form_tem").find(".msg-val").attr("id", "msg_" + nextindex);
-
-                    $("form_tem").removeAttr("id");
-                    $("#form_tem").attr("id", "form_" + nextindex);
-                }
-            });
-
-            function remove() {
-                $('.form-jug').on('click', '.remove', function () {
-                    var id = this.id;
-                    var split_id = id.split("_");
-                    var deleteindex = split_id[1];
-                    $("#form_" + deleteindex).remove();
-                });
-            }
-
-            function validar() {
-                var total = $('.form-jug');
-                var error = 0;
-
-                for (var i = 0; i < total.length; i++) {
-
-                    var id = total[i].id;
-                    var split_id = id.split("_");
-                    var index = split_id[1];
-                    var input = $("#Nombre_" + index).val();
-                    var msg = "";
-
-                    if (input.length <= 0) {
-                        msg = "El nombre es requerido";
-                        error++;
-                    }
-                    else if (input.length < 4) {
-                        msg = "El nombre no puede tener menos de 4 caracteres";
-                        error++;
-                    }
-                    else if (input.length > 80) {
-                        msg = "El nombre no puede exceder los 80 caracteres";
-                        error++;
-                    }
-                    $("#msg_" + index).html(msg);
-                }
-
-                if (error != 0) {
-                    return false;
-                }
-                return true;
-            }
-        </script>
-
     </div>
 
 </form>
 
-@Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/dragula")
-
+<script src="~/Scripts/custom/abm-jugs.js"></script>
 <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
