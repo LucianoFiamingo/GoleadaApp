@@ -2,6 +2,8 @@
     ViewBag.Title = "Alta de muchos Jugadores";
 }
 
+@Styles.Render("~/Content/dragula")
+
 @if (TempData["Creado"] != null && (string)TempData["Creado"] == "FALSE")
 {
     <div class="alert alert-danger alert-dismissible fade show text-center mt-5" role="alert">
@@ -55,12 +57,34 @@
                                    id="Nombre_2" name="Nombres[]" type="text" value="">
                         </div>
                         <div class="col px-0 pl-4">
-                            <input onclick="remove()" id="remove_2" type="button" class="btn btn-danger btn-jug remove" value="-">
+                            <button onclick="remove()" id="remove_2" type="button" class="btn btn-danger btn-jug remove" value="-">
+                            <ion-icon name="remove-outline"></ion-icon>
+                            </button>
                         </div>
                     </div>
                     <span id="msg_2" class="msg-val text-danger"></span>
                 </div>
             </div>
+
+            <template>
+                <div class="form-group" id="form_">
+                    <label class="control-label">Nombre Jugador</label>
+                    <div class="col-md-10 col-lg-6 px-0">
+                        <div class="row mx-0">
+                            <div class="col-10 px-0">
+                                <input class="form-control input-jug text-box "
+                                       id="Nombre_" name="Nombres[]" type="text" value="">
+                            </div>
+                            <div class="col px-0 pl-4">
+                                <button onclick="remove()" id="remove_" type="button" class="btn btn-danger btn-jug remove" value="-">
+                                    <ion-icon name="remove-outline"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <span id="msg_" class="msg-val text-danger"></span>
+                    </div>
+                </div>
+            </template>
 
         </div>
 
@@ -140,4 +164,6 @@
 </form>
 
 @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/dragula")
 
+<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>

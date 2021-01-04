@@ -154,6 +154,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Dragula\dragula.min.css" />
     <Content Include="Content\Images\MARCA.svg" />
     <Content Include="Content\Tables\datatables.min.css" />
     <Content Include="Content\Tables\jquery.dataTables.min.css" />
@@ -166,6 +167,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom\custom-ajax.js" />
     <Content Include="Scripts\custom\navegar.js" />
+    <Content Include="Scripts\Dragula\dragula.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />

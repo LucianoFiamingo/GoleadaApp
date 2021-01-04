@@ -25,6 +25,12 @@ namespace MVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dragula").Include(
+          "~/Scripts/Dragula/dragula.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/dragula").Include(
+                      "~/Content/Dragula/dragula.min.css"));
         }
     }
 }
